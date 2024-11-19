@@ -33,7 +33,6 @@ for i in ${!boxes[@]}; do
 
   # (the fields are %CPU,PID,USER,COMMAND)
   ssh ${boxes[i]} 'ps -eo pcpu,pid,user,stime,args --no-headers| sort -t. -nk1,2 -k4,4 -r |head -n 5' >$tempo
-  echo read 1 completed on ${boxes[i]}, kill test now?
   sleep $gap
   ssh ${boxes[i]} 'ps -eo pcpu,pid,user,stime,args --no-headers| sort -t. -nk1,2 -k4,4 -r |head -n 5' >$tempo_plus1m
 
