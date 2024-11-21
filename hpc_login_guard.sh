@@ -46,6 +46,12 @@ for i in ${!boxes[@]}; do
       break
     fi
 
+    # Should the process not belong to a user in 'clusterusers' primary group, skip this line
+    group=$(ssh ${boxes[i]} id $usr | cut -d '(' -f3 | cut -d ')' -f1)
+    if [[ "$group" != "clusterusers" ]]; then
+      break
+    fi
+    
     p1m=$(grep $pid $tempo_plus1m)
     cpu_p1m=$(echo $p1m | cut -d ' ' -f 1)
 
