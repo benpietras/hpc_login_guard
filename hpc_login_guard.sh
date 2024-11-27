@@ -63,7 +63,7 @@ for i in ${!boxes[@]}; do
       echo -e "%CPU PID User Start Cmd\n" >>$mailo
       echo -e $p"\n" >>$mailo
       echo -e "Please delete the process on $boxcut using\n\n\x27pkill $pid\x27\n\nand consider using either the batch system, a viz node or a slurm interactive job.\nThe login nodes are underpowered and high CPU usage affects the many users logged on.\n\nMany thanks,\nResearch IT" >>$mailo
-      mail -s 'Login node, high CPU usage detected' -c $usr@liv.ac.uk hpc-support@liv.ac.uk <$mailo
+      mail -s 'Login node, high CPU usage detected' -r hpc-support@liverpool.ac.uk -c $usr@liv.ac.uk hpc-support@liv.ac.uk <$mailo
 
     fi
 
