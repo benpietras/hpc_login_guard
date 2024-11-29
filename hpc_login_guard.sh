@@ -45,7 +45,12 @@ for i in ${!boxes[@]}; do
     if ! grep -q "$pid" "$tempo_plus1m"; then
       break
     fi
-
+    
+    # Drop any non-system users, like alces-c+
+    if ! ssh ${boxes[i]} id "$usr" >/dev/null 2>&1; then
+      break
+    fi
+    
     # Should the process not belong to a user in 'clusterusers' primary group, skip this line
     group=$(ssh ${boxes[i]} id $usr | cut -d '(' -f3 | cut -d ')' -f1)
     if [[ "$group" != "clusterusers" ]]; then
