@@ -63,8 +63,10 @@ for i in ${!boxes[@]}; do
     # Here any process over ${cpu_trigger}% of a CPU
     # for ${gap} seconds triggers an email alert
     if [ $(echo "$cpu_trigger < $cpu" | bc -l) -eq 1 ] && [ $(echo "$cpu_trigger < $cpu_p1m" | bc -l) -eq 1 ]; then
+      
+      name=$(ssh ${boxes[i]} getent passwd $usr | cut -d ':' -f 5|cut -d ' ' -f1)
 
-      echo -e "Hi there,\n\nI'm writing to you as we have detected high CPU usage by your process below:\n" >$mailo
+      echo -e "Hi $name,\n\nI'm writing to you as we have detected high CPU usage by your process below:\n" >$mailo
       echo -e "%CPU PID User Start Cmd\n" >>$mailo
       echo -e $p"\n" >>$mailo
       echo -e "Please delete the process on $boxcut using\n\n\x27pkill $pid\x27\n\nand consider using either the batch system, a viz node or a slurm interactive job.\nThe login nodes are underpowered and high CPU usage affects the many users logged on.\n\nMany thanks,\nResearch IT" >>$mailo
