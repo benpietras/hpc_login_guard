@@ -7,8 +7,8 @@ E.g., to run every half hour via cron:
 
 ```*/30  * * * * /usr/local/bin/scripts/hpc_login_guard.sh 2>&1```
 
-Requirements:
-* Cron access
+Requirements on the linux server to run it:
+* Cron access for your user
 * ssh key access to the login nodes
 * 'mail' configured to allow sending emails from the cli
   
