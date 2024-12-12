@@ -1,7 +1,10 @@
 HPC Login Guard
 ====
 A perpetual bugbear of HPC is users running heavy lifting on the login nodes, slowing down the service for everyone else. 
-This could run hourly as a root cronjob, emailing users to stop. It checks the process is still above threshold after x seconds, to ignore CPU spikes. 
+This could run hourly as a cronjob, emailing users to stop. It checks the process is still above threshold after x seconds, to ignore CPU spikes. 
+
+E.g.
+```*/30  * * * * /usr/local/bin/scripts/hpc_login_guard.sh 2>&1```
 
 Requirements:
 * Cron access
@@ -10,10 +13,10 @@ Requirements:
   
 That's it. No admin access necessary.
 
-There are some comments in the code, but basically it works like this:
-1) Get the top 5 CPU processes of the node
+There are some comments to explain in the code, but basically it works like this:
+1) Read the top 5 CPU processes of the node
 2) Wait 1 minute
-3) Get the top 5 CPU processes of the node
+3) Read the top 5 CPU processes of the node
 4) Skip in the case that the process is 
     * Not owned by a user in a group 'clusterusers' (that all our users are in)
     * Not above 90 %CPU in both readings
