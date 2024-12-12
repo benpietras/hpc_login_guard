@@ -6,7 +6,7 @@ This could run hourly as a root cronjob, emailing users to stop. It checks the p
 Requirements:
 * Cron access
 * ssh key access to the login nodes
-* 'mail' configured to allow sending emails
+* 'mail' configured to allow sending emails from the cli
   
 That's it. No admin access necessary.
 
