@@ -4,6 +4,7 @@ A perpetual bugbear of HPC is users running heavy lifting on the login nodes, sl
 This could run hourly as a cronjob, emailing users to stop. It checks the process is still above threshold after x seconds, to ignore CPU spikes. 
 
 E.g.
+
 ```*/30  * * * * /usr/local/bin/scripts/hpc_login_guard.sh 2>&1```
 
 Requirements:
