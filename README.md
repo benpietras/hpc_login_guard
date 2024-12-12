@@ -18,7 +18,7 @@ There are some comments to explain in the code, but basically it works like this
 1) Read the top 5 CPU processes of the node
 2) Wait 1 minute
 3) Read the top 5 CPU processes of the node
-4) Skip in the case that the process is 
+4) Skip in the case that the process is:
     * Not owned by a user in a group 'clusterusers' (that all our users are in)
     * Not above 90 %CPU in both readings
 5) If the process isn't skipped, then email the user (appearing from our team email) to suggest better ways of working.
