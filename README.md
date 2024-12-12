@@ -24,4 +24,4 @@ There are some comments to explain in the code, but basically it works like this
 5) If the process isn't skipped, then email the user (appearing from our team email) to suggest better ways of working.
 6) Once the top 5 processes are looped over, loop to the next listed node.
 
-The script should be quite adaptable, you can add as many nodes as you like to scan (dynamic array), change the %CPU threshold, time to measure over, number of times to measure, etc.
+The script should be quite adaptable, you can add as many nodes as you like to scan (dynamic array), as many top processes, change the %CPU threshold, time to measure over, number of times to measure, etc.
